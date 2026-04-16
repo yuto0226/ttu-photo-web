@@ -143,7 +143,7 @@ const classes = [
 const photowalks = [
   { 
     title: '人像外拍', 
-    img: '/img/camps/walk1.jpg' 
+    img: 'img/camps/walk1.jpg' 
   },
   { 
     title: '婚紗外拍', 

@@ -2,7 +2,7 @@
   <div class="bg-black min-h-screen pt-24 pb-32 px-6 md:px-12 text-white font-sans overflow-x-hidden relative z-0">
     
     <div class="text-center mb-28 reveal-fade" ref="addRevealRef">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-widest font-serif text-white">關於我們</h1>
+      <h1 class="text-3xl md:text-5xl font-bold mb-4 tracking-widest font-serif text-white">關於我們</h1>
       <p class="text-[#e6a23c] tracking-[0.3em] text-sm md:text-base uppercase">About TTU Photo</p>
     </div>
 
@@ -29,7 +29,10 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 max-w-7xl mx-auto">
           
           <div class="bg-black border border-white/10 p-12 md:p-14 min-h-[350px] md:min-h-[400px] flex flex-col justify-end hover:border-[#e6a23c] transition-colors duration-500 group relative overflow-hidden z-0 rounded-sm shadow-2xl">
-            <div class="absolute inset-0 z-[-1] opacity-20 bg-[url('class.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+            <div 
+              class="absolute inset-0 z-[-1] opacity-20 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+              :style="{ backgroundImage: `url(${basePath}class.jpg)` }"
+            ></div>
             <div class="relative z-10 text-left">
               <h3 class="text-2xl font-serif tracking-widest mb-5 font-bold text-white group-hover:text-[#e6a23c] transition-colors">平日社課</h3>
               <p class="text-white/80 leading-relaxed text-[16px] tracking-wide m-0">
@@ -39,7 +42,10 @@
           </div>
 
           <div class="bg-black border border-white/10 p-12 md:p-14 min-h-[350px] md:min-h-[400px] flex flex-col justify-end hover:border-[#e6a23c] transition-colors duration-500 group relative overflow-hidden z-0 rounded-sm shadow-2xl">
-            <div class="absolute inset-0 z-[-1] opacity-20 bg-[url('outdoor.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+            <div 
+              class="absolute inset-0 z-[-1] opacity-20 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+              :style="{ backgroundImage: `url(${basePath}outdoor.jpg)` }"
+            ></div>
             <div class="relative z-10 text-left">
               <h3 class="text-2xl font-serif tracking-widest mb-5 font-bold text-white group-hover:text-[#e6a23c] transition-colors">假日實拍</h3>
               <p class="text-white/80 leading-relaxed text-[16px] tracking-wide m-0">
@@ -49,7 +55,10 @@
           </div>
 
           <div class="bg-black border border-white/10 p-12 md:p-14 min-h-[350px] md:min-h-[400px] flex flex-col justify-end hover:border-[#e6a23c] transition-colors duration-500 group relative overflow-hidden z-0 rounded-sm shadow-2xl">
-            <div class="absolute inset-0 z-[-1] opacity-20 bg-[url('contest.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+            <div 
+              class="absolute inset-0 z-[-1] opacity-20 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+              :style="{ backgroundImage: `url(${basePath}contest.jpg)` }"
+            ></div>
             <div class="relative z-10 text-left">
               <h3 class="text-2xl font-serif tracking-widest mb-5 font-bold text-white group-hover:text-[#e6a23c] transition-colors">年度競賽</h3>
               <p class="text-white/80 leading-relaxed text-[16px] tracking-wide m-0">
@@ -67,6 +76,9 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+
+// 獲取 Vite 設定中的 base 路徑 (例如 /ttu-photo-web/)
+const basePath = import.meta.env.BASE_URL
 
 const revealEls = ref([])
 let observer = null
@@ -88,7 +100,8 @@ onMounted(() => {
       })
     }, { threshold: 0.15 })
 
-    document.querySelectorAll('.reveal-el, .reveal-up, .reveal-fade').forEach((el) => {
+    // 確保 observer 監聽所有需要動畫的元素
+    document.querySelectorAll('.reveal-fade, .reveal-up').forEach((el) => {
       observer.observe(el)
     })
   }, 100)
