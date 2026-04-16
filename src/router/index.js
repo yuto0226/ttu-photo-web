@@ -48,6 +48,13 @@ const router = createRouter({
       component: () => import('@/views/ExhibitionView.vue'),
       meta: { title: '光影之間' },
     },
+    { path: '/m/home', name: 'm-home', component: () => import('../views/mobile/HomeViewForPhone.vue') },
+    { path: '/m/about', name: 'm-about', component: () => import('../views/mobile/AboutViewForPhone.vue') },
+    { path: '/m/member', name: 'm-member', component: () => import('../views/mobile/MemberViewForPhone.vue') },
+    { path: '/m/equipment', name: 'm-equipment', component: () => import('../views/mobile/EquipmentViewForPhone.vue') },
+    { path: '/m/exhibition', name: 'm-exhibition', component: () => import('../views/mobile/ExhibitionViewForPhone.vue') },
+    { path: '/m/project', name: 'm-project', component: () => import('../views/mobile/ProjectViewForPhone.vue') },
+    
     {
       path: '/qrcode',
       redirect: '/',

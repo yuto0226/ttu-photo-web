@@ -5,26 +5,37 @@
         
         <div class="flex items-center gap-2.5">
           <img src="/logoblack.png" alt="TTU PHOTO" class="h-10 w-10 opacity-100" />
-          <span class="font-display font-semibold text-ink text-sm tracking-tight">TTU PHOTO</span>
-          <span class="text-chalk mx-1">|</span>
-          <span class="text-xs text-sand">大同大學攝影社</span>
+          <div class="flex flex-col">
+            <span class="font-display font-semibold text-ink text-sm tracking-tight uppercase">TTU PHOTO</span>
+            <span class="text-[10px] text-sand uppercase tracking-widest font-medium">大同大學攝影社</span>
+          </div>
         </div>
 
-        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] text-clay">
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-4 text-[13px] text-clay font-medium">
           <a
             href="https://www.instagram.com/ttuphoto_?igsh=MW80Z2puaGdkZnJlZQ%3D%3D&utm_source=qr"
             target="_blank"
             class="hover:text-[#e6a23c] transition-colors"
-            >Instagram</a
-          >
+          >Instagram</a>
+          
           <RouterLink to="/about" class="hover:text-[#e6a23c] transition-colors">關於我們</RouterLink>
           <RouterLink to="/member" class="hover:text-[#e6a23c] transition-colors">幹部名單</RouterLink>
-           <RouterLink to="/equipment" class="hover:text-[#e6a23c] transition-colors">器材清單</RouterLink>
+          <RouterLink to="/equipment" class="hover:text-[#e6a23c] transition-colors">器材清單</RouterLink>
           <RouterLink to="/project" class="hover:text-[#e6a23c] transition-colors">活動紀錄</RouterLink>
           <RouterLink to="/exhibition-2026" class="hover:text-[#e6a23c] transition-colors">年度展覽</RouterLink>
+
+          <RouterLink 
+            to="/m/home" 
+            class="ml-2 px-4 py-2 bg-ink text-paper rounded-full text-[11px] flex items-center gap-2 hover:bg-[#e6a23c] hover:text-white transition-all duration-300 shadow-sm active:scale-95"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+            </svg>
+            手機版模式
+          </RouterLink>
         </div>
 
-        <p class="text-[11px] text-sand tracking-wide">© 2026 TTU PHOTO.</p>
+        <p class="text-[11px] text-sand tracking-wide font-medium">© 2026 TTU PHOTO.</p>
       </div>
     </div>
   </footer>
@@ -35,5 +46,8 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <style scoped>
-/* 這裡可以依需求加入特定的 footer 樣式 */
+/* 確保字體在不同螢幕上的連貫性 */
+.font-display {
+  font-family: var(--font-display, inherit);
+}
 </style>
