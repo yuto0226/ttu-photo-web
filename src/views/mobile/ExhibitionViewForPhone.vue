@@ -2,7 +2,6 @@
   <div class="bg-black min-h-screen pt-14 p-0 relative overflow-x-hidden text-white font-sans">
     
     <div class="relative w-full z-0">
-      
       <img src="/poster.png" alt="光影之間：定格" class="w-full h-auto object-contain block relative z-0" />
       <img src="/overlay.png" alt="定格標題" class="absolute top-0 left-0 w-full h-auto z-10 pointer-events-none block" />
 
@@ -27,7 +26,7 @@
 
     <div class="relative bg-black -mt-[25%] md:-mt-[70%] z-30">
       
-      <div class="absolute inset-0 z-0 opacity-80 bg-[url('/poster.png')] bg-cover bg-fixed bg-center"></div>
+      <div class="absolute inset-0 z-0 opacity-40 bg-[url('/poster.png')] bg-[length:100px_auto] md:bg-[length:300px_auto] bg-repeat bg-fixed bg-center"></div>
 
       <div class="relative z-10">
         
@@ -43,7 +42,7 @@
               class="reveal-el reveal-up flex flex-col md:flex-row gap-10 items-center group cursor-pointer"
               @click="openLightbox(photo)"
             >
-              <div class="w-full md:w-3/5 overflow-hidden flex justify-center bg-black/40 p-2 shadow-2xl">
+              <div class="w-full md:w-3/5 overflow-hidden flex justify-center bg-black/60 p-6 md:p-2 shadow-2xl">
                 <img :src="photo.src" :alt="photo.title" class="w-full h-auto max-h-[80vh] object-contain transition-transform duration-700 group-hover:scale-105" />
               </div>
               <div class="w-full md:w-2/5 flex flex-col justify-center px-4">
@@ -64,17 +63,17 @@
             <p class="mt-4 text-white/50 tracking-widest text-sm">HONORABLE MENTIONS</p>
           </div>
 
-          <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+          <div class="columns-2 lg:columns-3 gap-4 md:gap-6 space-y-4 md:space-y-6">
             <div 
               v-for="(photo, index) in honorableMentions" :key="index"
               class="reveal-el reveal-up relative overflow-hidden group cursor-pointer break-inside-avoid shadow-lg"
               @click="openLightbox(photo)"
             >
               <img :src="photo.src" :alt="photo.title" class="w-full h-auto block transition-transform duration-500 group-hover:scale-105" />
-              <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center backdrop-blur-sm">
-                <span class="text-[#e6a23c] text-xs tracking-widest mb-2">佳作</span>
-                <h4 class="text-lg font-serif tracking-widest mb-1">{{ photo.title }}</h4>
-                <p class="text-white/60 text-xs tracking-wider">{{ photo.author }}</p>
+              <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-2 md:p-4 text-center backdrop-blur-sm">
+                <span class="text-[#e6a23c] text-[10px] md:text-xs tracking-widest mb-1">佳作</span>
+                <h4 class="text-sm md:text-lg font-serif tracking-widest mb-1">{{ photo.title }}</h4>
+                <p class="text-white/60 text-[10px] md:text-xs tracking-wider">{{ photo.author }}</p>
               </div>
             </div>
           </div>
@@ -135,9 +134,7 @@ const closeLightbox = () => {
   document.body.style.overflow = ''
 }
 
-// ─── 動畫偵測器 ───
 let observer = null
-
 onMounted(() => {
   setTimeout(() => {
     observer = new IntersectionObserver((entries) => {
@@ -148,16 +145,12 @@ onMounted(() => {
         }
       })
     }, { threshold: 0.1 })
-
     document.querySelectorAll('.reveal-el').forEach((el) => {
       observer.observe(el)
     })
   }, 100)
 })
-
-onUnmounted(() => {
-  if (observer) observer.disconnect()
-})
+onUnmounted(() => { if (observer) observer.disconnect() })
 </script>
 
 <style scoped>
@@ -165,10 +158,7 @@ onUnmounted(() => {
 .reveal-right { opacity: 0; transform: translateX(50px); transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
 .reveal-up { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
 .reveal-fade { opacity: 0; transition: all 1s ease-out; }
-
-/* 觸發後的顯示狀態 (!important 確保一定會生效) */
 .reveal-el.is-visible { opacity: 1 !important; transform: translate(0, 0) !important; }
-
 .fade-enter-active, .fade-leave-active { transition: opacity 0.3s ease; }
 .fade-enter-from, .fade-leave-to { opacity: 0; }
 </style>
