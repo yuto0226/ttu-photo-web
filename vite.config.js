@@ -7,7 +7,7 @@ export default defineConfig(({ command }) => {
   return {
     // 如果是執行 npm run build (生產環境)，就用 /ttu-photo-web/
     // 如果是執行 npm run dev (開發環境)，就用根目錄 /
-    base: command === 'build' ? '/ttu-photo-web/' : '/',
+    base: command === 'build' ? '/' : '/',
     
     plugins: [
       vue(),
