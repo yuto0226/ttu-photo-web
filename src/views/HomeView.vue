@@ -130,13 +130,13 @@
       <div class="max-w-5xl mx-auto px-6">
         <div class="mb-10 scroll-reveal" ref="addRevealRef">
           <span class="text-[11px] uppercase tracking-[0.2em] text-moss font-semibold">Course</span>
-          <h2 class="mt-2 text-3xl md:text-4xl font-bold text-ink">115 四月 活動</h2>
+          <h2 class="mt-2 text-3xl md:text-4xl font-bold text-ink">114 下學期 活動</h2>
         </div>
 
         <div class="scroll-reveal w-full flex flex-row rounded-2xl overflow-hidden shadow-2xl border border-ink/10 bg-white" ref="addRevealRef">
-          <img src="/schedule-1.png" alt="社課 1" class="w-1/3 h-auto object-cover block" />
-          <img src="/schedule-2.png" alt="社課 2" class="w-1/3 h-auto object-cover block" />
-          <img src="/schedule-3.png" alt="社課 3" class="w-1/3 h-auto object-cover block" />
+          <img src="/01.jpg" alt="社課 1" class="w-1/3 h-auto object-cover block" />
+          <img src="/02.jpg" alt="社課 2" class="w-1/3 h-auto object-cover block" />
+          <img src="/03.jpg" alt="社課 3" class="w-1/3 h-auto object-cover block" />
         </div>
       </div>
     </section>
